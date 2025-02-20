@@ -79,6 +79,8 @@ jobs:
           file: Dockerfile.estimator
           load: true
           tags: pose_estimator:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       -
         name: Build tester
         uses: docker/build-push-action@v6
@@ -86,6 +88,8 @@ jobs:
           file: Dockerfile.tester
           load: true
           tags: estimator-tester:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       -
         name: Build ibpc_py
         run: |
